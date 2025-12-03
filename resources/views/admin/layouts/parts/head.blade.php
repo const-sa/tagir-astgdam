@@ -20,5 +20,6 @@
         rel="stylesheet" />
     <link rel="shortcut icon" type="image/jpg" href="{{ display_file(setting('fav')) }}" />
     @livewireStyles
+    
     @stack('css')
 </head>

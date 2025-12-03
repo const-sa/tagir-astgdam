@@ -27,7 +27,8 @@
                     <i class="fa-solid fa-bell"></i>
                     @lang('admin.Notifications')
                 </div>
-                <i class="fa-solid fa-angle-right arrow"></i>
+                {{-- <i class="fa-solid fa-angle-right arrow"></i> --}}
+                <i class="fas fa-angle-right "></i>
             </a>
         </li>
         <div wire:ignore.self id="Notifications"
@@ -49,7 +50,7 @@
                 </a>
             </li>
         </div>
-       
+
         <li class="list-item">
             <a href="{{ route('admin.accounting') }}">
                 <div>
@@ -66,7 +67,7 @@
                         <i class="fa-solid fa-gear icon"></i>
                         @lang('admin.Settings')
                     </div>
-                    <i class="arrow fa-solid fa-angle-right "></i>
+                    <i class="fas fa-angle-right "></i>
                 </a>
             </li>
 
@@ -143,7 +144,7 @@
                     <i class="fas fa-gear"></i>
                     الشؤون الادارية
                 </div>
-                <i class="fa-solid fa-angle-right arrow"></i>
+                <i class="fas fa-angle-right"></i>
                 </a>
             </li>
             <div id="administrativeAffairs" class="collapse item-collapse">
@@ -216,7 +217,7 @@
                     <i class="fas fa-gear"></i>
                     ادارة الموظفين
                 </div>
-                <i class="fa-solid fa-angle-right arrow"></i>
+                <i class="fas fa-angle-right "></i>
                 </a>
             </li>
             <div id="employesManagement" class="collapse item-collapse">

@@ -81,7 +81,7 @@
                                     data-bs-dismiss="modal">رجوع
                             </button>
                             <button type="button" wire:click="uploadExcelFile" class="btn btn-primary btn-sm px-3">
-                                {{ __('save') }}
+                                حفظ
                             </button>
                         </div>
                     </div>

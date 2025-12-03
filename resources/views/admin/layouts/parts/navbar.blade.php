@@ -85,7 +85,7 @@
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                     @auth
                         <li>
-                            <form action="{{ route('logout') }}" method="POST">
+                            <form action="{{ route('admin.logout') }}" method="POST">
                                 @csrf
                                 <button class="dropdown-item" type="submit">
                                     تسجيل الخروج

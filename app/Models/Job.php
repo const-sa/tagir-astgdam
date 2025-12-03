@@ -10,8 +10,9 @@ class Job extends Model
     use HasFactory;
     protected $guarded = [];
 
-    public function employes()
+    public function employees()
     {
         return $this->hasMany(User::class, 'job_id');
     }
+    
 }

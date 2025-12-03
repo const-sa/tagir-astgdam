@@ -207,7 +207,7 @@
                         <td>{{ $user->end_insurance }}</td>
                         <td class="{{ !$user->insuranceCompany ? 'text-danger' : '' }}">
                             {{ $user->insuranceCompany?->name ?? 'غير محدد' }}</td>
-                        <td>{{ $user->job }}</td>
+                        <td>{{ $user->jobrelation?->name }}</td>
                         <td>
                             <div class="d-flex gap-3">
                                 <div class="dropdown drop-table dropend">

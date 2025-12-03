@@ -22,7 +22,7 @@ class ComponentJobs extends Component
     }
     public function render()
     {
-        $jobs = Job::where(function ($q) {
+        $jobs = Job::withCount('employees')->where(function ($q) {
             if ($this->search) {
                 $q->where('name', 'LIKE', "%" . $this->search . "%");
             }

@@ -872,13 +872,14 @@
     border-radius: 16px;
     background-color: #fff;
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3);
-    width: calc(100% / 3 - 20px);
-    height: 169px;
+    width: calc(100% / 6 - 20px);
+    // height: 169px;
     img,
     svg,
     i {
-        width: 56px;
-        height: 56px;
+        width: 32px;
+        height: 32px;
+        font-size: 30px;
         object-fit: contain;
         color: #f14f22;
     }

@@ -39,7 +39,32 @@
             <div class="inp-holder">
                 <label class="special-input">
                     <span>قيمه العقد المالية</span>
-                    <input type="number" wire:model='amount' min="0" class="form-control">
+                    <input type="number" wire:model.live='amount' min="0" class="form-control">
+                </label>
+            </div>
+        </div>
+        <div class="col-12 col-md-4 col-lg-3">
+            <div class="form-check mt-4">
+                <input class="form-check-input" type="checkbox" id="tax_included" wire:model.live="tax_included">
+                <label class="form-check-label" for="tax_included">
+                    المبلغ شامل ضريبة ؟
+                </label>
+            </div>
+        </div>
+        <div class="col-12 col-md-4 col-lg-3">
+            <div class="inp-holder">
+                <label class="special-input">
+                    <span>قيمة الضريبة</span>
+                    <input type="number" class="form-control" value="{{ $tax_amount }}" readonly>
+                </label>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-4 col-lg-3">
+            <div class="inp-holder">
+                <label class="special-input">
+                    <span>إجمالي العقد بعد الضريبة</span>
+                    <input type="number" class="form-control" value="{{ $total_with_tax }}" readonly>
                 </label>
             </div>
         </div>
@@ -47,7 +72,7 @@
             <div class="inp-holder">
                 <label class="special-input">
                     <span>المدفوع مقدم</span>
-                    <input type="number" wire:model='paid' min="0" class="form-control">
+                    <input type="number" wire:model.live='paid' min="0" class="form-control">
                 </label>
             </div>
         </div>
@@ -55,7 +80,7 @@
             <div class="inp-holder">
                 <label class="special-input">
                     <span>المتبقي</span>
-                    <input type="number" wire:model='rest' min="0" class="form-control">
+                    <input type="number" wire:model='rest' min="0" class="form-control" readonly>
                 </label>
             </div>
         </div>

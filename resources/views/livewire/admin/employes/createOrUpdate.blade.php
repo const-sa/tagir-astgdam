@@ -106,13 +106,13 @@
         <input class="form-control" type="tel" wire:model="phone" />
     </div>
     <div class="col">
-        <label for="">رقم منشاة (اعمار المساند)</label>
+        <label for="">رقم منشا </label>
         <input class="form-control" type="tel" wire:model="employer_number" />
     </div>
-    <div class="col">
+    <!-- <div class="col">
         <label for="">اسم صاحب العمل</label>
         <input class="form-control"  wire:model="employer_name" />
-    </div>
+    </div> -->
     <div class="col">
         <label for="">التامينات الاجتماعية</label>
         <input class="form-control" wire:model="social_insurance" />
@@ -153,26 +153,7 @@
             @endforeach
         </select>
     </div>
-    <div class="col">
-        <label for="">جهة العمل</label>
-{{--        <input class="form-control" type="text" wire:model="side_job" />--}}
-        <select wire:model.live="side_job_id" class="form-select">
-            <option>اختر</option>
-            @foreach(\App\Models\User::clients()->select('id','name')->get() as $client)
-                <option value="{{$client->id}}">{{$client->name}}</option>
-            @endforeach
-        </select>
-    </div>
-    <div class="col">
-        <label for="">المسمى الوظيفي</label>
-{{--        <input class="form-control" type="text" wire:model="side_job" />--}}
-        <select wire:model.live="price_quotation_job_id" class="form-select">
-            <option>اختر</option>
-            @foreach($jobs as $item)
-                <option value="{{$item->id}}">{{$item->job_title}}</option>
-            @endforeach
-        </select>
-    </div>
+
 
     <div class="col">
         <label for="">تاريخ مباشرة العمل</label>
@@ -301,83 +282,7 @@
         </div>
     @endif
 
-        <div class="row w-100">
-            <div class="col-12 col-md-6">
-                <label for="" class="small-label">
-                    الاجازة
-                    -
-                    Vacation
-                </label>
-                <select wire:model.live="vacation"
-                        disabled
-                        class="form-control">
-                    <option value="">حدد الاجازة</option>
-                    <option value="one_year">سنه</option>
-                    <option value="two_years">سنتين</option>
-                </select>
 
-            </div>
-
-            <div class="col-12 col-md-6">
-                <label for="" class="small-label">
-                    أيام الأجازة
-                    -
-                    Vacation days
-                </label>
-                <input type="number" min="0"
-                       wire:model="vacation_days"
-                       disabled
-                       class="form-control">
-            </div>
-            <div class="col-12 col-md-6">
-                <label for="" class="small-label">
-                    تكلفة الأجازة
-                    -
-                    Vacation cost
-                </label>
-                <input type="text"
-                       wire:model="vacation_cost"
-                       disabled
-                       class="form-control">
-            </div>
-            <div class="col-12 col-md-6">
-                <label for="" class="small-label">
-                    تكلفة التذكرة الأجازة
-                    -
-                    Cost of vacation ticket
-                </label>
-                <input type="text"
-                       disabled
-                       wire:model="vacation_ticket_cost"
-                       class="form-control">
-            </div>
-
-            <div class="col-12 col-md-6">
-                <label for="" class="small-label">
-                    نهاية الخدمة
-                    -
-                    End of service
-                </label>
-                <input type="text"
-                       disabled
-                       wire:model="end_of_service_cost"
-                       class="form-control">
-            </div>
-
-            <div class="col-12 col-md-6">
-                <label for="" class="small-label">
-                    تذكرة نهاية الخدمة
-                    -
-                    Ticket for end of service
-                </label>
-                <input type="text"
-                       disabled
-                       wire:model="end_of_service_ticket_cost"
-                       class="form-control"
-                >
-            </div>
-
-        </div>
 
 
 

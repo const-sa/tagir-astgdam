@@ -154,6 +154,16 @@
         </select>
     </div>
 
+    <div class="col">
+        <label for="">المسمى الوظيفي</label>
+{{--        <input class="form-control" type="text" wire:model="side_job" />--}}
+        <select wire:model.live="price_quotation_job_id" class="form-select">
+            <option>اختر</option>
+            @foreach($jobs as $item)
+                <option value="{{$item->id}}">{{$item->job_title}}</option>
+            @endforeach
+        </select>
+    </div>
 
     <div class="col">
         <label for="">تاريخ مباشرة العمل</label>
@@ -282,7 +292,7 @@
         </div>
     @endif
 
-
+    
 
 
 

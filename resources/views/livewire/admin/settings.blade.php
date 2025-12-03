@@ -47,14 +47,14 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="col">
+                        <!-- <div class="col">
                             <div class="inp-holder">
                                 <label class="special-input">
                                     <span>@lang('admin.URL site')</span>
                                     <input type="url" wire:model="website_url" id="" class="form-control">
                                 </label>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col">
                             <div class="inp-holder">
                                 <label class="special-input">

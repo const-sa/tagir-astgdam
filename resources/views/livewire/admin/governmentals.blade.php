@@ -1,4 +1,8 @@
 <div class="main-side">
+    <div class="alert alert-primary">
+        هنا يمكنك اضافة الوثائق لمتابعة الانتهاء والتجديد مثال ( السجل التجاري - الرخص…
+
+    </div>
     <div class="main-title">
         <div class="small">@lang('admin.Home')</div>
         <div class="large">الوثائق الحكوميه

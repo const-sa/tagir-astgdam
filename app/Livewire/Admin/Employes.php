@@ -29,7 +29,7 @@ class Employes extends Component
     public $driver_card, $start_driver_card, $end_driver_card;
     public $is_employee, $start_is_employee, $end_is_employee;
     public $resident, $start_resident, $end_resident, $search_side_job;
-
+    public $job_id;
     public $file_end_id_number, $file_end_insurance, $file_end_passport, $file_health_card, $file_is_employee, $file_resident, $file_driver_card;
 
     public $model = User::class;
@@ -117,14 +117,15 @@ class Employes extends Component
             'password' => ['required_without:obj'],
             'phone' => ['required'],
             'status' => ['required'],
-            'job' => ['required'],
+            // 'job' => ['required'],
             'start_work' => ['nullable'],
             'end_insurance' => ['nullable'],
             'image' => ['nullable'],
             'gender' => ['nullable'],
             'work_type_id' => ['nullable'],
             'side_job_id' => ['required'],
-            'price_quotation_job_id' => 'required',
+            // 'price_quotation_job_id' => 'required',
+            'job_id' => 'required|exists:jobs,id',
 
 
             'type' => ['nullable'],
@@ -298,6 +299,11 @@ class Employes extends Component
             }
             if ($this->filter_work_type_id) {
                 $q->where('work_type_id', $this->filter_work_type_id);
+            }
+             if (request('job')) {
+                $q->whereHas('jobrelation', function ($jobQuery) {
+                    $jobQuery->where('id', request('job'));
+                });
             }
         })->latest()->paginate(10);
 

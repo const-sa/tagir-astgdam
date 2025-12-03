@@ -29,6 +29,7 @@ use App\Livewire\Admin\Expired;
 use App\Livewire\Admin\Goals;
 use App\Livewire\Admin\Governmentals;
 use App\Livewire\Admin\InsuranceCompanies;
+use App\Livewire\Admin\Jobs;
 use App\Livewire\Admin\Menus;
 use App\Livewire\Admin\Messages\Image;
 use App\Livewire\Admin\Messages\MessagesSent;
@@ -247,6 +248,7 @@ Route::group([
             Route::get('jobs', ComponentJobs::class)
                 ->middleware('can:read_jobs')
                 ->name('jobs');
+            // Route::get('jobs', Jobs::class)->name('jobs');
             Route::get('governmentals', Governmentals::class)
                 ->middleware('can:read_governmentals')
                 ->name('governmentals');

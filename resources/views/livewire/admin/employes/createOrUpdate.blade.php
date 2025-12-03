@@ -140,9 +140,18 @@
             @endforeach
         </select>
     </div>
-    <div class="col">
+    {{-- <div class="col">
         <label for="">المهنة</label>
         <input class="form-control" type="text" wire:model="job" />
+    </div> --}}
+    <div class="col">
+        <label for="">المهنة</label>
+        <select class="form-select" wire:model="job_id">
+            <option value="">اختر المهنة</option>
+            @foreach(\App\Models\Job::orderBy('name')->get() as $job)
+                <option value="{{ $job->id }}">{{ $job->name }}</option>
+            @endforeach
+        </select>
     </div>
     <div class="col">
         <label for="">جهة العمل</label>

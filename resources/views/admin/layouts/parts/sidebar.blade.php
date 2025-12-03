@@ -240,6 +240,14 @@
                 </li>
             </div>
         @endcanany
+        {{-- <li class="list-item">
+            <a href="{{ route('admin.jobs') }}">
+                <div>
+                    <i class="fas fa-briefcase"></i>
+                    المهن
+                </div>
+            </a>
+        </li> --}}
 
         @can('read_clients')
             <li class="list-item">

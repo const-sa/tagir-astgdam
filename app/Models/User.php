@@ -63,7 +63,7 @@ class User extends Authenticatable
     {
         return $this->belongsTo(WorkType::class, 'work_type_id');
     }
-    public function job()
+    public function jobrelation()
     {
         return $this->belongsTo(Job::class, 'job_id');
     }

@@ -51,6 +51,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>إسم الوظيفة</th>
+                                <th>عدد الموظفين</th>
                                 <th>@lang('Actions')</th>
                             </tr>
                         </thead>
@@ -59,6 +60,17 @@
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
                                     <td>{{ $job->name }}</td>
+                                    <td>
+                                        {{-- {{ $job->employees_count }} --}}
+                                         @if($job->employees_count > 0)
+                                            <a href="{{ route('admin.employes', ['job' => $job->id]) }}"
+                                            class="badge bg-info text-white text-decoration-none">
+                                                {{ $job->employees_count }}
+                                            </a>
+                                        @else
+                                            0
+                                        @endif
+                                    </td>
                                     <td>
                                         <div class="btn-holder d-flex align-items-center gap-3">
                                             <button type="button" wire:click='edit({{ $job->id }})'>

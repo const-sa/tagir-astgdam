@@ -1,10 +1,10 @@
-{{--<script data-navigate-once src="{{ asset('admin-asset/js/bootstrap.bundle.min.js') }}"></script>--}}
-{{--<script data-navigate-once src="{{ asset('admin-asset/js/all.min.js') }}"></script>--}}
+<script data-navigate-once src="{{ asset('admin-asset/js/bootstrap.bundle.min.js') }}"></script>
+<script data-navigate-once src="{{ asset('admin-asset/js/all.min.js') }}"></script>
 <script data-navigate-once src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 {{--<script data-navigate-once src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>--}}
 {{--<script data-navigate-once src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>--}}
-{{--<script data-navigate-once src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>--}}
-{{--<script data-navigate-once src="{{ asset('admin-asset/js/main.js') }}"></script>--}}
+<script data-navigate-once src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script data-navigate-once src="{{ asset('admin-asset/js/main.js') }}"></script>
 @vite(['resources/js/admin.js'])
 <script type="module">
     const Toast = Swal.mixin({
@@ -40,6 +40,6 @@
       event.target.value = value.replace(/[^0-9]/g, '');
     }
   </script>
-  
+
 @livewireScripts
 @stack('js')

@@ -1,4 +1,4 @@
-<nav class="main-navbar">
+<nav class="main-navbar not-print">
     <div class="container-fluid d-flex align-items-center justify-content-between">
         <div class="logo">
             <div class="tog-active d-block d-lg-none" data-tog="true" data-active=".app">

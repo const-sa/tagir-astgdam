@@ -1,17 +1,5 @@
-// tables
-.table-responsive {
-    width: 100%;
-    overflow-x: auto;
-}
-
 .table-dark th {
     background-color: #243848;
-}
-
-.table,
-.table thead {
-    box-shadow: 0 0 5px 0 #ddd;
-    border-radius: 5px;
 }
 
 .table {
@@ -160,7 +148,8 @@
     border-bottom: 1px dashed #fff
 }
 
-.content_view table th,.content_view table td {
+.content_view table th,
+.content_view table td {
     font-size: 14px;
     border: 1px solid #dee2e6;
     text-align: center
@@ -290,14 +279,113 @@
 
 @media(max-width: 575.98px) {
     .content_view .content .bar-bottom {
-        padding-left:0;
+        padding-left: 0;
         flex-direction: column
     }
 }
 
 @media(max-width: 1199.98px) {
     .content_view .content .bar-bottom {
-        padding-left:0;
+        padding-left: 0;
         justify-content: center
     }
+}
+
+
+.table-invoice {
+    & .duble-border {
+        border-bottom-width: 2px;
+        border-bottom-color: black;
+    }
+
+    td {
+        border: 1px solid #bbb;
+        vertical-align: middle;
+        padding: 9px;
+        font-size: 14px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    th {
+        border: 1px solid #bbb;
+        background-color: #f4f4f4;
+        font-size: 14px;
+        padding: 9px;
+        font-weight: bolder;
+        text-align: center;
+    }
+
+    & .td-head {
+        background-color: #f4f4f4;
+        border-left: 1px solid #bbb !important;
+        text-align: right;
+        font-size: 13px !important;
+        font-weight: bold;
+        width: 50%;
+    }
+
+    @media print {
+        margin: 0;
+
+        th {
+            font-size: 9px !important;
+            padding: 5px;
+        }
+
+        td {
+            font-size: 10px !important;
+            padding: 5px;
+        }
+    }
+}
+
+
+.table-invoice-footer {
+    & .duble-border {
+        border-bottom-width: 2px;
+        border-bottom-color: black;
+    }
+
+    border: 0 !important;
+
+    td {
+        vertical-align: middle;
+        padding: 9px !important;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .bg-gray {
+        background-color: #e5e5e5;
+    }
+
+    th {
+        background-color: #f4f4f4;
+        font-size: 14px !important;
+        padding: 9px !important;
+        font-weight: bolder;
+    }
+
+    & .td-head {
+        text-align: right;
+        font-size: 13px !important;
+        font-weight: bold;
+        width: 50%;
+    }
+
+
+    @media print {
+        td {
+            font-size: 12px;
+
+            b {
+                font-size: 12px;
+            }
+        }
+    }
+}
+
+.table>:not(:first-child) {
+    border-top: unset;
 }

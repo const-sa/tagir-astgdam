@@ -9,7 +9,7 @@
     <div class="app">
         @include('admin.layouts.parts.sidebar')
         @yield('content')
-        <footer class="main-footer">
+        <footer class="main-footer not-print">
             جميع الحقوق محفوظة لـ <a href="https://www.const-tech.org/">كوكبة التقنية</a> . © 2024
         </footer>
     </div>

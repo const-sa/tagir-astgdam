@@ -1269,3 +1269,81 @@
         opacity: 0.8;
     }
 }
+
+
+.box-invoice {
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 0 10px;
+  margin-bottom: 8px;
+
+  .company-info {
+    color: #394e62;
+    font-weight: 600;
+
+    .name {
+      font-size: 16px;
+      font-weight: bold;
+      padding-inline-start: 5px;
+      margin-bottom: 8px;
+    }
+
+    p {
+      margin-bottom: 5px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    @media print {
+      .name {
+        font-size: 13px !important;
+      }
+
+      p {
+        font-size: 11.5px !important;
+      }
+    }
+  }
+
+  .client-info {
+    .holder {
+      padding: 5px 8px;
+      margin-bottom: 5px;
+      border-radius: 3px;
+      font-weight: bold;
+      font-size: 13px;
+      background-color: #ededed;
+    }
+
+    p,
+    .name {
+      font-size: 13px;
+      margin-bottom: 5px;
+    }
+
+    @media print {
+      .holder {
+        font-size: 13px !important;
+      }
+
+      p,
+      .name {
+        font-size: 11.5px !important;
+      }
+    }
+  }
+
+  @media print {
+    .col-md-4.p-3 {
+      width: calc(100% / 3);
+
+      * {
+        font-size: 14px;
+      }
+
+      img {
+        width: 100px;
+      }
+    }
+  }
+}

@@ -1,4 +1,4 @@
-<div class="sidebar" wire:ignore.self>
+<div class="sidebar not-print" wire:ignore.self>
     <div class="tog-active d-none d-lg-block" data-tog="true" data-active=".app">
         <i class="fas fa-bars"></i>
     </div>

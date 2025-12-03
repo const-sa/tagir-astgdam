@@ -285,6 +285,12 @@ Route::group([
             // Vendors
             Route::get('vendors', \App\Livewire\Admin\Vendors::class)->name('vendors.index');
 
+            Route::view('/management', 'admin.management.index')->name('management');
+            Route::view('/management/create', 'admin.management.create')->name('management.create');
+            Route::view('/workers', 'admin.workers.index')->name('workers');
+            Route::view('/workers/create', 'admin.workers.create')->name('workers.create');
+            Route::view('/hiring', 'admin.hiring.index')->name('hiring');
+            Route::view('/hiring/create', 'admin.hiring.create')->name('hiring.create');
             // Articles Categories
             Route::prefix('articles-categories')->group(function () {
                 Route::view('/', 'admin.articles-categories.index')->name('articles-categories.index');

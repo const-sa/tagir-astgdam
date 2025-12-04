@@ -54,6 +54,15 @@
                     <i class="fab fa-buffer"></i>
                     <div class="text"> مشاريع التاجير</div>
                 </a>
+                <a href="{{ route('admin.invoices.create') }}" class="box-icon">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    <div class="text">اضافة فاتورة</div>
+                </a>
+
+                <a href="{{ route('admin.prices') }}" class="box-icon">
+                    <i class="fas fa-file-signature"></i>
+                    <div class="text">اضافة عرض السعر</div>
+                </a>
                 <!-- <a href="{{ route('admin.notifications.index') }}" class="box-icon">
                     <img src="{{ asset('admin-asset/img/bell.svg') }}" alt="">
                     <div class="text">@lang('notifications')</div>

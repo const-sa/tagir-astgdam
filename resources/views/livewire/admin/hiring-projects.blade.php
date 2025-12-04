@@ -49,7 +49,7 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $project->title }}</td>
                             <td>{{ $project->client?->name }}</td>
-                            <td>{{ $project->client_phone }}</td>
+                            <td>{{ $project->client?->phone }}</td>
                             <td>{{ $project->client_city ?? $project->client?->city?->name }}</td>
                             <td>{{ $project->start_date }}</td>
                             <td>{{ $project->end_date }}</td>

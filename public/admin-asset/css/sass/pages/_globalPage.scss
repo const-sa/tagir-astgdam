@@ -257,7 +257,6 @@ input[readonly] {
     }
 }
 
-
 .status {
     font-size: 10px;
     padding: 3px 5px;
@@ -301,35 +300,38 @@ input[readonly] {
 
 .main-table {
     width: 100%;
-    // background: #f7f9fa;
     border-radius: 8px 8px 0px 0px;
-    border: 1px solid #e0e0e0;
+
+    tr:nth-child(2n):not(.bg-white) {
+        background-color: #ecf2f2 !important;
+    }
 
     thead {
-        background: #fff;
-        border: 1px solid #e0e0e0;
+        background-color: #10375c;
 
         tr {
             th {
-                padding: 12px 13px;
+                padding: 10px 13px;
                 font-weight: 500;
-                font-size: 16px;
+                font-size: 15px;
+                vertical-align: middle;
                 text-align: center;
+                color: #fff;
             }
         }
     }
 
     tbody {
         tr {
-            &.active {
-                background: rgba(54, 159, 255, 0.19);
-            }
-
             td {
                 padding: 10px 13px;
                 font-weight: 500;
                 font-size: 14px;
+                vertical-align: middle;
                 text-align: center;
+                font-weight: bold;
+                color: #555;
+                border: 1px solid #ddd !important;
 
                 .user {
                     @include flex-justify(flex-start);
@@ -352,39 +354,245 @@ input[readonly] {
                         height: 1.5em;
                     }
                 }
-            }
 
-            .drop-table {
-                .dropdown-toggle {
-                    &::after {
-                        content: none;
-                    }
-                }
-
-                .dropdown-menu {
-                    transition: $transition;
-                    opacity: 0;
-                    visibility: hidden;
-
-                    li {
-                        .dropdown-item {
-                            text-align: start;
-                            font-size: 13px;
-
-                            i,
-                            svg,
-                            img {
-                                width: 18px;
-                            }
+                .drop-table {
+                    .dropdown-toggle {
+                        &::after {
+                            content: none;
                         }
                     }
 
-                    &.show {
-                        opacity: 1;
-                        visibility: visible;
+                    .dropdown-menu {
+                        transition: $transition;
+                        opacity: 0;
+                        visibility: hidden;
+
+                        li {
+                            .dropdown-item {
+                                text-align: start;
+                                font-size: 13px;
+
+                                i,
+                                svg,
+                                img {
+                                    width: 18px;
+                                }
+                            }
+                        }
+
+                        &.show {
+                            opacity: 1;
+                            visibility: visible;
+                        }
                     }
                 }
             }
+        }
+    }
+}
+
+// print
+@media print {
+    .not-print {
+        display: none !important;
+    }
+
+    .prt-none-shadow {
+        box-shadow: none !important;
+    }
+
+    body {
+        direction: rtl !important;
+        padding: 10px !important;
+    }
+
+    .re-tas-pro {
+        width: 100%;
+        padding: 0 !important;
+        overflow-x: hidden;
+
+        .issue-main-info {
+            padding: 0 !important;
+            border: none !important;
+
+            .row {
+                .col-md-3 {
+                    width: 25%;
+                }
+            }
+        }
+    }
+
+    .table-responsive {
+        width: 100% !important;
+    }
+
+    .ar {
+        font-size: 19px !important;
+    }
+
+    .data-content {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        width: 100% !important;
+
+        div {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            width: 100% !important;
+
+            div {
+                width: 50%;
+
+                p {
+                    font-size: 8px !important;
+                    white-space: wrap !important;
+                }
+
+                &.holder {
+                    width: 100% !important;
+
+                    .special {
+                        width: 100% !important;
+
+                        textarea {
+                            width: 100% !important;
+                            min-height: 100px !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .casher-invoice {
+        .invoice-content {
+            .logo-holder {
+                .the_image {
+                    width: 10px !important;
+                }
+            }
+
+            .invoice-name {
+                font-size: 10px !important;
+            }
+        }
+
+        .the_address {
+            p {
+                font-size: 11px !important;
+            }
+        }
+
+        .tax {
+            font-size: 11px;
+        }
+
+        .the_date {
+            font-size: 11px;
+        }
+
+        div {
+            b {
+                font-size: 11px !important;
+            }
+        }
+
+        .main-table {
+            tr {
+                th {
+                    font-size: 7px;
+                    padding: 4px;
+                }
+
+                td {
+                    font-size: 7px;
+                    padding: 4px;
+                }
+            }
+        }
+
+        .bototm-table {
+            .dd {
+                font-size: 11px !important;
+
+                .nn {
+                    font-size: 11px !important;
+                }
+            }
+        }
+
+        .wel {
+            margin: auto !important;
+            padding: 0 !important;
+            font-size: 12px !important;
+            text-align: center !important;
+        }
+
+        .bar_code_holder {
+            width: 40% !important;
+
+            svg {
+                width: 100% !important;
+                height: 100% !important;
+            }
+        }
+
+        .parent-boxes-info {
+            margin-top: 10px !important;
+            width: 60% !important;
+        }
+    }
+
+    .box-shadow {
+        .header-invoice {
+            .row {
+                .col-lg-4 {
+                    width: 33% !important;
+                }
+            }
+            .name {
+                font-size: 12px !important;
+            }
+
+            .address {
+                font-size: 12px !important;
+            }
+
+            .title {
+                font-size: 17px !important;
+            }
+
+            .img-holder {
+                img {
+                    width: 70px !important;
+                }
+            }
+        }
+
+        .black {
+            font-size: 15px !important;
+        }
+
+        .def {
+            font-size: 14px !important;
+        }
+
+        .box-information {
+            flex-direction: row !important;
+        }
+
+        .box-bank {
+            width: calc(100% - 117px) !important;
+        }
+
+        .box-qr {
+            position: absolute !important;
+            margin: unset !important;
+            margin-bottom: 0 !important;
+            transform: translateY(calc(-50% - (26px / 2))) !important;
         }
     }
 }
@@ -589,5 +797,4 @@ input[readonly] {
             height: 250px;
         }
     }
-
 }

@@ -125,7 +125,7 @@ class Employes extends Component
             'image' => ['nullable'],
             'gender' => ['nullable'],
             'work_type_id' => ['nullable'],
-            'side_job_id' => ['required'],
+            'side_job_id' => ['nullable'],
             // 'price_quotation_job_id' => 'required',
             'job_id' => 'required|exists:jobs,id',
 

@@ -66,8 +66,6 @@
                             {{-- <td>{{ $project->workers_count ?? '--' }}</td> --}}
                             <td class="not-print">
                                 <div class="btn-holder d-flex align-items-center justify-content-center gap-3">
-
-                                    {{-- تصدير عمال المشروع (تضيفه لاحقاً) --}}
                                     <button type="button" class="btn btn-sm btn-primary" title="تصدير بيانات العمال">
                                         Excel <i class="fa-solid fa-file-excel"></i>
                                     </button>

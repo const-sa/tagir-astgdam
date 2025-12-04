@@ -23,7 +23,7 @@ class HiringProjects extends Component
     public $end_date;
     public $contract_file;
     public $workers_file;
-    public $workers_count;
+    // public $workers_count;
     public $search = '';
 
     protected $rules = [
@@ -31,7 +31,7 @@ class HiringProjects extends Component
         'client_id'    => 'required|exists:users,id',
         'start_date'   => 'nullable|date',
         'end_date'     => 'nullable|date|after_or_equal:start_date',
-        'workers_count'=> 'nullable|integer|min:0',
+        // 'workers_count'=> 'nullable|integer|min:0',
         'contract_file'=> 'nullable',
         'workers_file' => 'nullable',
     ];
@@ -42,8 +42,8 @@ class HiringProjects extends Component
             'client_id.required' => 'حقل العميل مطلوب',
             'client_id.exists'   => 'العميل المحدد غير موجود',
             'end_date.after_or_equal' => 'تاريخ الانتهاء يجب أن يكون بعد أو يساوي تاريخ البدء',
-            'workers_count.integer'   => 'عدد العمال يجب أن يكون رقماً صحيحاً',
-            'workers_count.min'       => 'عدد العمال لا يمكن أن يكون سالباً',
+            // 'workers_count.integer'   => 'عدد العمال يجب أن يكون رقماً صحيحاً',
+            // 'workers_count.min'       => 'عدد العمال لا يمكن أن يكون سالباً',
         ];
     }
 
@@ -74,7 +74,7 @@ class HiringProjects extends Component
         $this->end_date     = null;
         $this->contract_file = null;
         $this->workers_file  = null;
-        $this->workers_count = null;
+        // $this->workers_count = null;
 
     }
 
@@ -94,7 +94,7 @@ class HiringProjects extends Component
         $this->client_city  = $project->client_city;
         $this->start_date   = $project->start_date;
         $this->end_date     = $project->end_date;
-        $this->workers_count = $project->workers_count;
+        // $this->workers_count = 1;
         $this->screen = 'edit';
     }
 

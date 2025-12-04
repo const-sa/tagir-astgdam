@@ -23,6 +23,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         View::composer('admin.layouts.admin', function ($view) {
+            $minDays       = (int) setting('min_duration') ?: 0;
+            $thresholdDate = now()->addDays($minDays);
             $fields = [
                 'end_id_number',
                 'end_insurance',
@@ -34,7 +36,8 @@ class AppServiceProvider extends ServiceProvider
             ];
 
             $counts = [
-                'governmentals' => Governmental::whereDate('expire_date', '<', now())->count(),
+                // 'governmentals' => Governmental::whereDate('expire_date', '<', now())->count(),
+                'governmentals' => Governmental::whereDate('expire_date', '<', $thresholdDate)->count(),
             ];
             foreach ($fields as $f) {
                 $counts[$f] = User::whereDate($f, '<', now())->count();

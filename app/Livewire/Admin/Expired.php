@@ -79,16 +79,18 @@ class Expired extends Component
     public function render()
     {
         $expiredCounts = $this->makeCounts();
+        $minDays       = (int) setting('min_duration') ?: 0;
+        $thresholdDate = now()->addDays($minDays);
         $governmentals = collect();
         $items         = collect();
 
         if (!$this->page && $this->govern === 'yes') {
-            $governmentals = Governmental::whereDate('expire_date', '<', now())
-                ->latest()->paginate(10);
+            // $governmentals = Governmental::whereDate('expire_date', '<', now())->latest()->paginate(10);
+            $governmentals = Governmental::whereDate('expire_date', '<', $thresholdDate)->latest()->paginate(10);
         } else {
             $items = User::query()
-                ->when($this->page, function ($q) {
-                    $q->whereDate($this->page, '<', now());
+                ->when($this->page, function ($q) use ($thresholdDate) {
+                    $q->whereDate($this->page, '<', $thresholdDate); 
                 })
                 ->latest()->paginate(10);
         }
@@ -104,12 +106,15 @@ class Expired extends Component
     }
     protected function makeCounts(): array
     {
+        $minDays       = (int) setting('min_duration') ?: 0;
+        $thresholdDate = now()->addDays($minDays);
         $counts = [
-            'governmentals' => Governmental::whereDate('expire_date', '<', now())->count(),
+            // 'governmentals' => Governmental::whereDate('expire_date', '<', now())->count(),
+            'governmentals' => Governmental::whereDate('expire_date', '<', $thresholdDate)->count(),
         ];
 
         foreach (self::USER_DATE_FIELDS as $field) {
-            $counts[$field] = User::whereDate($field, '<', now())->count();
+            $counts[$field] = User::whereDate($field, '<', $thresholdDate)->count();
         }
 
         $counts['total'] = array_sum($counts);

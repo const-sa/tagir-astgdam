@@ -51,20 +51,12 @@ use Livewire\WithPagination;
 class Expired extends Component
 {
     use WithPagination;
-
-    // أي حقل منتهٍ للموظف (end_id_number, end_passport, ...)
     public ?string $page = null;
-
-    // هل نعرض الحكومية؟
     public string $govern = 'yes';
-
-    // اربط مع الـ query string
     protected $queryString = [
         'page'   => ['except' => null],
         'govern' => ['except' => 'yes'],
     ];
-
-    /** خريطة الحقول => اسم ملف المرفق المقابل */
     public const FILE_MAP = [
         'end_id_number'   => 'file_end_id_number',
         'end_insurance'   => 'file_end_insurance',
@@ -74,8 +66,6 @@ class Expired extends Component
         'end_is_employee' => 'file_is_employee',
         'end_resident'    => 'file_resident',
     ];
-
-    /** نفس الحقول لكن للعدّ السريع */
     public const USER_DATE_FIELDS = [
         'end_id_number',
         'end_insurance',
@@ -88,9 +78,7 @@ class Expired extends Component
 
     public function render()
     {
-        // عدادات موحّدة (تُستخدم أيضاً في الهيدر)
         $expiredCounts = $this->makeCounts();
-
         $governmentals = collect();
         $items         = collect();
 
@@ -98,7 +86,6 @@ class Expired extends Component
             $governmentals = Governmental::whereDate('expire_date', '<', now())
                 ->latest()->paginate(10);
         } else {
-            // لو تم اختيار نوع مستند منتهي للموظفين
             $items = User::query()
                 ->when($this->page, function ($q) {
                     $q->whereDate($this->page, '<', now());
@@ -115,8 +102,6 @@ class Expired extends Component
         ->extends('admin.layouts.admin')
         ->section('content');
     }
-
-    /** عدادات موحّدة لكل الأنواع */
     protected function makeCounts(): array
     {
         $counts = [
@@ -127,18 +112,14 @@ class Expired extends Component
             $counts[$field] = User::whereDate($field, '<', now())->count();
         }
 
-        $counts['total'] = array_sum($counts); // تشمل الحكومية + جميع حقول الموظفين
+        $counts['total'] = array_sum($counts);
         return $counts;
     }
-
-    /** رجّع اسم حقل الملف المقابل لحقل التاريخ */
     protected function resolveFileKey(?string $page): ?string
     {
         if (!$page) return null;
-        return self::FILE_MAP[$page] ?? ('file_' . $page); // fallback آمن
+        return self::FILE_MAP[$page] ?? ('file_' . $page);
     }
-
-    // أزرار الفلترة السريعة من الواجهة
     public function showGovernmentals()
     {
         $this->resetPage();

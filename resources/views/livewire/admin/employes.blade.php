@@ -181,8 +181,8 @@
                     <th>رقم الاقامة</th>
                     <th>انتهاء الاقامة</th>
                     <th>حالة الموظف</th>
-                    <th>جهة العمل</th>
-                    <th>تاريخ مباشرة العمل</th>
+                    {{-- <th>جهة العمل</th> --}}
+                    {{-- <th>تاريخ مباشرة العمل</th> --}}
                     <th>تاريخ انتهاء التأمين</th>
                     <th>التأمين</th>
                     <th>المهنة</th>
@@ -207,10 +207,10 @@
                         <td>{{ $user->id_number }}</td>
                         <td>{{ $user->end_id_number }}</td>
                         <td>{{ __($user->status) }}</td>
-                        <td class="{{ !$user->side_job ? 'text-danger' : '' }}">
+                        {{-- <td class="{{ !$user->side_job ? 'text-danger' : '' }}">
                             {{ $user->side_job ?? 'غير محدد' }}</td>
                         <td class="{{ !$user->start_work ? 'text-danger' : '' }}">
-                            {{ $user->start_work ?? 'غير محدد' }}</td>
+                            {{ $user->start_work ?? 'غير محدد' }}</td> --}}
                         <td>{{ $user->end_insurance }}</td>
                         <td class="{{ !$user->insuranceCompany ? 'text-danger' : '' }}">
                             {{ $user->insuranceCompany?->name ?? 'غير محدد' }}</td>

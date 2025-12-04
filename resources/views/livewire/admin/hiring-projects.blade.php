@@ -39,7 +39,7 @@
                         <th>بداية المشروع</th>
                         <th>انتهاء المشروع</th>
                         <th>العقد</th>
-                        <th>عدد العمال</th>
+                        {{-- <th>عدد العمال</th> --}}
                         <th>التحكم</th>
                     </tr>
                 </thead>
@@ -63,7 +63,7 @@
                                     --
                                 @endif
                             </td>
-                            <td>{{ $project->workers_count ?? '--' }}</td>
+                            {{-- <td>{{ $project->workers_count ?? '--' }}</td> --}}
                             <td class="not-print">
                                 <div class="btn-holder d-flex align-items-center justify-content-center gap-3">
 
@@ -76,12 +76,40 @@
                                             wire:click="edit({{ $project->id }})">
                                         <i class="fas fa-pen"></i>
                                     </button>
-
                                     <button type="button" class="btn btn-sm btn-danger"
-                                            wire:click="delete({{ $project->id }})"
-                                            onclick="return confirm('هل انت متأكد من الحذف؟')">
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#deleteProjectModal{{ $project->id }}">
                                         <i class="fas fa-trash"></i>
                                     </button>
+                                    <div class="modal fade" id="deleteProjectModal{{ $project->id }}" tabindex="-1" aria-hidden="true"
+                                        wire:ignore.self>
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">حذف المشروع</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                                </div>
+
+                                                <div class="modal-body">
+                                                    هل أنت متأكد أنك تريد حذف هذا المشروع؟
+                                                </div>
+
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">إلغاء</button>
+
+                                                    <button type="button"
+                                                            class="btn btn-danger btn-sm"
+                                                            wire:click="delete({{ $project->id }})"
+                                                            data-bs-dismiss="modal">
+                                                        نعم، احذف
+                                                    </button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
 
                                 </div>
                             </td>
@@ -155,10 +183,10 @@
                 <input type="date" class="form-control" wire:model="end_date">
                 @error('end_date') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
-            <div class="col">
+            {{-- <div class="col">
                 <label>عدد العمال</label>
                 <input type="number" min="0" class="form-control" wire:model="workers_count">
-            </div>
+            </div> --}}
             <div class="col">
                 <label>العقد *</label>
                 <input type="file" class="form-control" wire:model="contract_file" accept=".pdf,image/*">

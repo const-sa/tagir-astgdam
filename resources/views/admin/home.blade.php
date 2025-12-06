@@ -30,7 +30,7 @@
                 <div class="labor-count-number" id="nonRentedWorkers">{{ \App\Models\User::employes()->whereNull('side_job_id')->count() }}</div>
             </div>
 
-            <div class="labor-info-card non-rented-workers">
+            <div class="labor-info-card projects-tager">
                 <span class="labor-card-icon"><i class="fas fa-briefcase"></i></span>
                 <div class="labor-card-title">مشاريع التاجير</div>
                 <div class="labor-count-number" id="nonRentedWorkers">00</div>
@@ -78,7 +78,7 @@
         <style>
             .labor-cards-container {
                 display: grid;
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(4, 1fr);
                 gap: 20px;
             }
 
@@ -121,6 +121,13 @@
                 background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
             }
 
+            .labor-info-card.projects-tager::before {
+                background: linear-gradient(90deg, #a18cd1 0%, #fbc2eb 100%);
+
+                /* background: linear-gradient(90deg, #f6d365 0%, #fda085 100%); */
+            }
+
+
             .labor-card-icon {
                 font-size: 2.5em;
                 margin-bottom: 15px;
@@ -137,6 +144,10 @@
 
             .labor-info-card.non-rented-workers .labor-card-icon {
                 color: #4facfe;
+            }
+
+            .labor-info-card.projects-tager .labor-card-icon {
+                color: #a18cd1;
             }
 
             .labor-card-title {
@@ -166,6 +177,12 @@
 
             .labor-info-card.non-rented-workers .labor-count-number {
                 background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+            .labor-info-card.projects-tager .labor-count-number {
+                background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
                 background-clip: text;

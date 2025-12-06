@@ -252,18 +252,26 @@
             <a data-bs-toggle="collapse" href="#hiring" aria-expanded=""">
                 <div>
                     <i class=" fas fa-gear"></i>
-                    ادارة المشاريع
+                    مشاريع التاجير
                 </div>
                 <i class="fas fa-angle-left "></i>
             </a>
         </li>
         <div id="hiring" class="collapse item-collapse">
 
-            <li class="list-item">
+            {{-- <li class="list-item">
                 <a href="{{ route('admin.management') }}" class="">
                     <div>
                         <i class="fas fa-users"></i>
                         المشاريع
+                    </div>
+                </a>
+            </li> --}}
+            <li class="list-item">
+                <a href="{{ route('admin.hiring') }}" class="">
+                    <div>
+                        <i class="fas fa-users"></i>
+                        تأجير العمالة
                     </div>
                 </a>
             </li>
@@ -272,14 +280,6 @@
                     <div>
                         <i class="fas fa-users"></i>
                         العمالة
-                    </div>
-                </a>
-            </li>
-            <li class="list-item">
-                <a href="{{ route('admin.hiring') }}" class="">
-                    <div>
-                        <i class="fas fa-users"></i>
-                        تأجير العمالة
                     </div>
                 </a>
             </li>
@@ -315,13 +315,14 @@
             </a>
         </li>
 
-
-
-
-
-
-
-
+        <li class="list-item">
+            <a href="{{ route('admin.accounting') }}">
+                <div>
+                    <i class="fa-solid fa-grip"></i>
+                    التقارير
+                </div>
+            </a>
+        </li>
 
         @can('read_price_quotation')
             <li class="list-item">
@@ -334,7 +335,7 @@
             </li>
         @endcan
 
-        @can('read_contactes')
+        {{-- @can('read_contactes')
             <li class="list-item">
                 <a href="{{ route('admin.contactes') }}" class="">
                     <div>
@@ -344,7 +345,6 @@
                     </div>
                 </a>
             </li>
-        @endcan
-
+        @endcan --}}
     </ul>
 </div>

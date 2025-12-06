@@ -92,7 +92,7 @@
                         <a href="{{ route('admin.departments') }}" class="">
                             <div>
                                 <i class="fas fa-users"></i>
-                                الاقسام
+                                اقسام الاداره
                             </div>
                         </a>
                     </li>

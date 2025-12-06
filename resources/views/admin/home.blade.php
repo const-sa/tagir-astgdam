@@ -13,13 +13,13 @@
     <div class="labor-dashboard-wrapper mb-4">
         <div class="labor-cards-container">
             <div class="labor-info-card total-workers">
-                <span class="labor-card-icon">👥</span>
+                <span class="labor-card-icon"><i class="fas fa-user-group"></i></span>
                 <div class="labor-card-title">عدد العمالة الإجمالي</div>
                 <div class="labor-count-number" id="totalWorkers">{{ \App\Models\User::employes()->count()}}</div>
             </div>
 
             <div class="labor-info-card rented-workers">
-                <span class="labor-card-icon">📋</span>
+                <span class="labor-card-icon"><i class="fas fa-file-lines"></i></span>
                 <div class="labor-card-title">عمالة مؤجرة</div>
                 <div class="labor-count-number" id="rentedWorkers">{{ \App\Models\User::employes()->whereNotNull('side_job_id')->count() }}</div>
             </div>
@@ -28,6 +28,12 @@
                 <span class="labor-card-icon">✓</span>
                 <div class="labor-card-title">عمالة بدون تأجير</div>
                 <div class="labor-count-number" id="nonRentedWorkers">{{ \App\Models\User::employes()->whereNull('side_job_id')->count() }}</div>
+            </div>
+
+            <div class="labor-info-card non-rented-workers">
+                <span class="labor-card-icon"><i class="fas fa-briefcase"></i></span>
+                <div class="labor-card-title">مشاريع التاجير</div>
+                <div class="labor-count-number" id="nonRentedWorkers">00</div>
             </div>
         </div>
     </div>

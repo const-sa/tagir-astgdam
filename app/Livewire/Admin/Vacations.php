@@ -9,17 +9,26 @@ use App\Traits\livewireResource;
 
 class Vacations extends Component
 {
-
     use livewireResource;
+
     public $user;
     public $exit_at, $return_at, $user_return_at, $user_id;
+    public $filter_employee_id = null;
+
     public function rules()
     {
         return [
-            'user_id' => $this->user ? 'nullable' : 'required',
-            'exit_at' => 'required',
+            'user_id'   => $this->user ? 'nullable' : 'required',
+            'exit_at'   => 'required',
             'return_at' => 'required',
         ];
+    }
+
+    public function updating($field)
+    {
+        if ($field === 'filter_employee_id') {
+            $this->resetPage();
+        }
     }
 
     public function mount($user = null)
@@ -29,19 +38,29 @@ class Vacations extends Component
             $this->user = $user;
         }
     }
+
     public function render()
     {
-        $vacations = Vacation::where(function ($q) {
-            if ($this->user) {
-                $q->where('user_id', $this->user->id);
-            }
-        })->latest()->paginate(10);
-        return view('livewire.admin.vacations', compact('vacations'))->extends('admin.layouts.admin')->section('content');
+        $vacations = Vacation::with('user')
+            ->when($this->filter_employee_id, function ($q) {
+                $q->where('user_id', $this->filter_employee_id);
+            })
+            ->latest()
+            ->paginate(10);
+        return view('livewire.admin.vacations', compact('vacations'))
+            ->extends('admin.layouts.admin')
+            ->section('content');
     }
+
     public function beforeSubmit()
     {
-        $this->data['user_id'] = $this->user->id;
+        if ($this->user) {
+            $this->data['user_id'] = $this->user->id;
+        } else {
+            $this->data['user_id'] = $this->user_id;
+        }
     }
+
     public function extendReturnAt(Vacation $vacation)
     {
         $this->validate(['return_at' => 'required']);
@@ -56,3 +75,4 @@ class Vacations extends Component
         $this->dispatch('alert', type: 'success', message: 'تم تسجيل رجوع الموظف');
     }
 }
+

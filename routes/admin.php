@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\PrivacyPolicyController;
 use App\Http\Controllers\Admin\ShowPriceQutation;
 use App\Http\Controllers\Admin\TicketController;
 use App\Http\Controllers\Admin\UsagePolicyController;
+use App\Http\Controllers\Select2Pagination;
 use App\Livewire\Accountant\AccountTree;
 use App\Livewire\Admin\Accounting\Accounts;
 use App\Livewire\Admin\Accounting\AccountsSettings;
@@ -187,6 +188,7 @@ Route::group([
                     ->middleware('can:create_contracts')
                     ->name('contracts.form');
             });
+            Route::get('/select2/employees', [Select2Pagination::class, 'employees'])->name('employees.select2');
 
             // Invoices
             Route::prefix('invoices')->group(function () {

@@ -40,6 +40,12 @@
       event.target.value = value.replace(/[^0-9]/g, '');
     }
   </script>
+<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
+@stack('before_livewire')
 
 @livewireScripts
 @stack('js')
+
+

@@ -334,7 +334,7 @@
             </li>
         @endcan
 
-        @can('read_contactes')
+        {{-- @can('read_contactes')
             <li class="list-item">
                 <a href="{{ route('admin.contactes') }}" class="">
                     <div>
@@ -344,7 +344,7 @@
                     </div>
                 </a>
             </li>
-        @endcan
+        @endcan --}}
 
     </ul>
 </div>

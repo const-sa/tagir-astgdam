@@ -15,6 +15,11 @@ class Vacations extends Component
     public $exit_at, $return_at, $user_return_at, $user_id;
     public $filter_employee_id = null;
 
+    public $filter_approval_status = null;
+    public $filter_exit_status = null;
+    public $filter_return_status = null;
+
+
     public function rules()
     {
         return [
@@ -41,13 +46,47 @@ class Vacations extends Component
 
     public function render()
     {
-        $vacations = Vacation::with('user')
-            ->when($this->filter_employee_id, function ($q) {
-                $q->where('user_id', $this->filter_employee_id);
-            })
-            ->latest()
-            ->paginate(10);
-        return view('livewire.admin.vacations', compact('vacations'))
+        // $vacations = Vacation::with('user')
+        //     ->when($this->filter_employee_id, function ($q) {
+        //         $q->where('user_id', $this->filter_employee_id);
+        //     })
+        //     ->latest()
+        //     ->paginate(10);
+        $query = Vacation::with('user');
+
+        if ($this->filter_employee_id) {
+            $query->where('user_id', $this->filter_employee_id);
+        }
+
+        if ($this->filter_approval_status) {
+            $query->where('approval_status', $this->filter_approval_status);
+        }
+
+        if ($this->filter_exit_status === 'exited') {
+            $query->whereNotNull('exit_done_at');
+        } elseif ($this->filter_exit_status === 'not_exited') {
+            $query->whereNull('exit_done_at');
+        }
+
+        if ($this->filter_return_status === 'returned') {
+            $query->whereNotNull('user_return_at');
+        } elseif ($this->filter_return_status === 'not_returned') {
+            $query->whereNull('user_return_at');
+        }
+
+        $vacations = $query->latest()->paginate(10);
+
+        // الإحصائيات
+        $stats = [
+            'pending'       => Vacation::where('approval_status', 'pending')->count(),
+            'approved'      => Vacation::where('approval_status', 'approved')->count(),
+            'rejected'      => Vacation::where('approval_status', 'rejected')->count(),
+            'exited'        => Vacation::whereNotNull('exit_done_at')->count(),
+            'not_exited'    => Vacation::whereNull('exit_done_at')->count(),
+            'returned'      => Vacation::whereNotNull('user_return_at')->count(),
+            'not_returned'  => Vacation::whereNull('user_return_at')->count(),
+        ];
+        return view('livewire.admin.vacations', compact('vacations', 'stats'))
             ->extends('admin.layouts.admin')
             ->section('content');
     }
@@ -77,22 +116,38 @@ class Vacations extends Component
 
 
     public function approveVacation(Vacation $vacation)
-{
-    $vacation->update(['approval_status' => 'approved']);
-    $this->dispatch('alert', type: 'success', message: 'تمت الموافقة على الطلب');
-}
+    {
+        $vacation->update(['approval_status' => 'approved']);
+        $this->dispatch('alert', type: 'success', message: 'تمت الموافقة على الطلب');
+    }
 
-public function rejectVacation(Vacation $vacation)
-{
-    $vacation->update(['approval_status' => 'rejected']);
-    $this->dispatch('alert', type: 'success', message: 'تم رفض الطلب');
-}
+    public function rejectVacation(Vacation $vacation)
+    {
+        $vacation->update(['approval_status' => 'rejected']);
+        $this->dispatch('alert', type: 'success', message: 'تم رفض الطلب');
+    }
 
-public function confirmExit(Vacation $vacation)
-{
-    $vacation->update(['exit_done_at' => now()->format('Y-m-d')]);
-    $this->dispatch('alert', type: 'success', message: 'تم تسجيل خروج الموظف');
-}
+    public function confirmExit(Vacation $vacation)
+    {
+        $vacation->update(['exit_done_at' => now()->format('Y-m-d')]);
+        $this->dispatch('alert', type: 'success', message: 'تم تسجيل خروج الموظف');
+    }
 
-}
+    public function filterByStatus($status)
+    {
+        $this->filter_approval_status = $status;
+        $this->resetPage();
+    }
 
+    public function filterByExit($status)
+    {
+        $this->filter_exit_status = $status;
+        $this->resetPage();
+    }
+
+    public function filterByReturn($status)
+    {
+        $this->filter_return_status = $status;
+        $this->resetPage();
+    }
+}

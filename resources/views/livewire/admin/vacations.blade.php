@@ -11,6 +11,160 @@
         </div>
     </div>
     <x-admin-alert></x-admin-alert>
+    <div class="row g-3 mb-3">
+
+        <div class="col-md-3">
+            <div class="card bg-secondary text-white text-center">
+                <div class="card-body">
+                    <h6>الطلبات المعلقة</h6>
+                    <h3>{{ $stats['pending'] }}</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card bg-success text-white text-center">
+                <div class="card-body">
+                    <h6>الطلبات المقبولة</h6>
+                    <h3>{{ $stats['approved'] }}</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card bg-danger text-white text-center">
+                <div class="card-body">
+                    <h6>الطلبات المرفوضة</h6>
+                    <h3>{{ $stats['rejected'] }}</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card bg-info text-white text-center">
+                <div class="card-body">
+                    <h6>تم الخروج</h6>
+                    <h3>{{ $stats['exited'] }}</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card bg-warning text-dark text-center">
+                <div class="card-body">
+                    <h6>لم يخرج بعد</h6>
+                    <h3>{{ $stats['not_exited'] }}</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card bg-primary text-white text-center">
+                <div class="card-body">
+                    <h6>عاد الموظف</h6>
+                    <h3>{{ $stats['returned'] }}</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card bg-dark text-white text-center">
+                <div class="card-body">
+                    <h6>لم يعد بعد</h6>
+                    <h3>{{ $stats['not_returned'] }}</h3>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    {{-- <div class="row g-3 mb-3">
+        <div class="col-md-3">
+            <div class="card text-white text-center
+            {{ $filter_approval_status === 'pending' ? 'border border-3 border-light' : '' }}
+            bg-secondary"
+                style="cursor:pointer" wire:click="filterByStatus('pending')">
+
+                <div class="card-body">
+                    <h6>الطلبات المعلقة</h6>
+                    <h3>{{ $stats['pending'] }}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white text-center
+            {{ $filter_approval_status === 'approved' ? 'border border-3 border-light' : '' }}
+            bg-success"
+                style="cursor:pointer" wire:click="filterByStatus('approved')">
+
+                <div class="card-body">
+                    <h6>الطلبات المقبولة</h6>
+                    <h3>{{ $stats['approved'] }}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white text-center
+            {{ $filter_approval_status === 'rejected' ? 'border border-3 border-light' : '' }}
+            bg-danger"
+                style="cursor:pointer" wire:click="filterByStatus('rejected')">
+
+                <div class="card-body">
+                    <h6>الطلبات المرفوضة</h6>
+                    <h3>{{ $stats['rejected'] }}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white text-center
+            {{ $filter_exit_status === 'exited' ? 'border border-3 border-light' : '' }}
+            bg-info"
+                style="cursor:pointer" wire:click="filterByExit('exited')">
+
+                <div class="card-body">
+                    <h6>تم الخروج</h6>
+                    <h3>{{ $stats['exited'] }}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-dark text-center
+            {{ $filter_exit_status === 'not_exited' ? 'border border-3 border-dark' : '' }}
+            bg-warning"
+                style="cursor:pointer" wire:click="filterByExit('not_exited')">
+
+                <div class="card-body">
+                    <h6>لم يخرج بعد</h6>
+                    <h3>{{ $stats['not_exited'] }}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white text-center
+            {{ $filter_return_status === 'returned' ? 'border border-3 border-light' : '' }}
+            bg-primary"
+                style="cursor:pointer" wire:click="filterByReturn('returned')">
+
+                <div class="card-body">
+                    <h6>عاد الموظف</h6>
+                    <h3>{{ $stats['returned'] }}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white text-center
+            {{ $filter_return_status === 'not_returned' ? 'border border-3 border-light' : '' }}
+            bg-dark"
+                style="cursor:pointer" wire:click="filterByReturn('not_returned')">
+
+                <div class="card-body">
+                    <h6>لم يعد بعد</h6>
+                    <h3>{{ $stats['not_returned'] }}</h3>
+                </div>
+            </div>
+        </div>
+
+    </div> --}}
+
     <div class="bar-options d-flex align-items-center justify-content-start flex-wrap gap-1 mb-2">
         <button class="main-btn" data-bs-toggle="modal" data-bs-target="#createVacation">
             @lang('admin.Add')
@@ -19,21 +173,53 @@
     </div>
 
     <div class="row">
-    <div class="col-md-4">
-        <div class="form-group">
-            <label for="filter_employee_id">الموظف</label>
-            <div wire:ignore>
-                <x-select2
-                    url="/admin/select2/employees"
-                    placeholder="اختر الموظف"
-                    id="filter_employee_id"
-                    wire:model="filter_employee_id"
-                    class="form-control"
-                />
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="filter_employee_id">الموظف</label>
+                <div wire:ignore>
+                    <x-select2 url="/admin/select2/employees" placeholder="اختر الموظف" id="filter_employee_id"
+                        wire:model="filter_employee_id" class="form-control" />
+                </div>
             </div>
         </div>
+        <div class="row mb-3">
+
+            {{-- فلتر حالة الطلب --}}
+            <div class="col-md-3">
+                <label>حالة الطلب</label>
+                <select wire:model.live="filter_approval_status" class="form-control">
+                    <option value="">الكل</option>
+                    <option value="pending">معلق</option>
+                    <option value="approved">مقبول</option>
+                    <option value="rejected">مرفوض</option>
+                </select>
+            </div>
+
+            {{-- فلتر الخروج --}}
+            <div class="col-md-3">
+                <label>حالة الخروج</label>
+                <select wire:model.live="filter_exit_status" class="form-control">
+                    <option value="">الكل</option>
+                    <option value="exited">تم الخروج</option>
+                    <option value="not_exited">لم يتم الخروج</option>
+                </select>
+            </div>
+
+            {{-- فلتر العودة --}}
+            <div class="col-md-3">
+                <label>حالة العودة</label>
+                <select wire:model.live="filter_return_status" class="form-control">
+                    <option value="">الكل</option>
+                    <option value="returned">عاد الموظف</option>
+                    <option value="not_returned">لم يعد بعد</option>
+                </select>
+            </div>
+
+        </div>
+
     </div>
-</div>
+
+
 
     <div class="table-responsive" id="prt-content" style="margin-top: 10px;">
         <table class="main-table">
@@ -67,10 +253,12 @@
                             @switch($vacation->approval_status)
                                 @case('approved')
                                     <span class="badge bg-success">مقبول</span>
-                                    @break
+                                @break
+
                                 @case('rejected')
                                     <span class="badge bg-danger">مرفوض</span>
-                                    @break
+                                @break
+
                                 @default
                                     <span class="badge bg-secondary">معلق</span>
                             @endswitch
@@ -78,7 +266,7 @@
 
                         {{-- تم الخروج؟ --}}
                         <td>
-                            @if($vacation->exit_done_at)
+                            @if ($vacation->exit_done_at)
                                 <span class="badge bg-success">
                                     تم الخروج {{ $vacation->exit_done_at }}
                                 </span>
@@ -95,25 +283,25 @@
                                         wire:click='userReturnAt({{ $vacation->id }})'>تسجيل رجوع
                                         الموظف</button>
                                 @endif
-                                 @if($vacation->approval_status === 'pending')
-        <button class="btn btn-primary btn-sm"
-            wire:click='approveVacation({{ $vacation->id }})'>
-            موافقة
-        </button>
+                                @if ($vacation->approval_status === 'pending')
+                                    <button class="btn btn-primary btn-sm"
+                                        wire:click='approveVacation({{ $vacation->id }})'>
+                                        موافقة
+                                    </button>
 
-        <button class="btn btn-outline-danger btn-sm"
-            wire:click='rejectVacation({{ $vacation->id }})'>
-            رفض
-        </button>
-    @endif
+                                    <button class="btn btn-outline-danger btn-sm"
+                                        wire:click='rejectVacation({{ $vacation->id }})'>
+                                        رفض
+                                    </button>
+                                @endif
 
-    {{-- تسجيل الخروج الفعلي بعد الموافقة --}}
-    @if($vacation->approval_status === 'approved' && !$vacation->exit_done_at)
-        <button class="btn btn-warning btn-sm"
-            wire:click='confirmExit({{ $vacation->id }})'>
-            تسجيل الخروج
-        </button>
-    @endif
+                                {{-- تسجيل الخروج الفعلي بعد الموافقة --}}
+                                @if ($vacation->approval_status === 'approved' && !$vacation->exit_done_at)
+                                    <button class="btn btn-warning btn-sm"
+                                        wire:click='confirmExit({{ $vacation->id }})'>
+                                        تسجيل الخروج
+                                    </button>
+                                @endif
                                 <div class="dropdown drop-table dropend">
                                     <button class="btn btn-outline-secondary btn-sm" type="button"
                                         data-bs-toggle="dropdown" aria-expanded="false">
@@ -139,7 +327,8 @@
                                     </ul>
                                 </div>
                                 @if (!$vacation->user_return_at)
-                                    <div class="modal fade" id="extendReturnAt{{ $vacation->id }}" aria-hidden="false">
+                                    <div class="modal fade" id="extendReturnAt{{ $vacation->id }}"
+                                        aria-hidden="false">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">

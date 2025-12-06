@@ -4,6 +4,7 @@ namespace App\Livewire\Contracts;
 
 use App\Models\Contract;
 use App\Models\User;
+use App\Models\UserContract;
 use App\Traits\livewireResource;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -76,6 +77,20 @@ class ContractForm extends Component
     }
     public function afterSubmit()
     {
+        if ($this->obj) {
+
+        UserContract::updateOrCreate(
+                [
+                    'user_id'     => $this->client_id,
+                    'contract_id' => $this->obj->id, 
+                ],
+                [
+                    'contract_path' => $this->file ? store_file($this->file, 'contracts') : null,
+                    'start_date'    => $this->contract_start_at,
+                    'end_date'      => $this->contract_end_at,
+                ]
+            );
+        }
         return redirect()->route('admin.contracts')->with('success', __('Added successfully'));
     }
 

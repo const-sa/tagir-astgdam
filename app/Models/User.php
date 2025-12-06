@@ -154,5 +154,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(UserContract::class,'user_id');
     }
+    // HiringProjects relation
+    public function hiringProjects()
+    {
+        return $this->hasMany(HiringProject::class, 'client_id')->orderBy('created_at', 'desc');
+    }
 
 }

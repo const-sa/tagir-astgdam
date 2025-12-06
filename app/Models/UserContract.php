@@ -9,4 +9,13 @@ class UserContract extends Model
 {
     use HasFactory;
     protected $guarded =[];
+     public function user()
+    {
+        return $this->belongsTo(User::class,'user_id');
+    }
+
+    public function contract()
+    {
+        return $this->belongsTo(Contract::class,'contract_id');
+    }
 }

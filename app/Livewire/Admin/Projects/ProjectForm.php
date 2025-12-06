@@ -7,6 +7,7 @@ use App\Models\Client;
 use App\Models\Project;
 use Livewire\Component;
 use App\Traits\livewireResource;
+use Mpdf\Tag\U;
 
 class ProjectForm extends Component
 {
@@ -43,7 +44,8 @@ class ProjectForm extends Component
     }
     public function render()
     {
-        $clients = Client::pluck('name', 'id')->toArray();
+        // $clients = Client::pluck('name', 'id')->toArray();
+        $clients = User::clients()->pluck('name', 'id')->toArray();
         $employees = User::employes()->pluck('name', 'id')->toArray();
         return view('livewire.admin.projects.project-form', compact('clients', 'employees'));
     }

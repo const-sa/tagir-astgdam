@@ -1,5 +1,5 @@
 <!-- Header -->
-<div class="d-flex align-items-center justify-content-between flex-wrap gap-3 mb-4">
+{{-- <div class="d-flex align-items-center justify-content-between flex-wrap gap-3 mb-4">
     <div class="main-title mb-0">
         <div class="small">
             @lang('admin.Home')
@@ -91,4 +91,5 @@
             </table>
         </div>
     </div>
-</div>
+</div> --}}
+<livewire:admin.reports.clients-report />

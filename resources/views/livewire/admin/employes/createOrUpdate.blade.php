@@ -6,7 +6,7 @@
     <a class="main-btn btn-main-color" href="{{ route('admin.employes') }}">عرض كل الموظفين</a>
 </div>
 <x-admin-alert></x-admin-alert>
-<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3">
+<form class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3">
     <div class="col">
         <label for="">الاسم المستخدم / Username</label>
         <input class="form-control" type="text" wire:model="name" />
@@ -292,7 +292,7 @@
         </div>
     @endif
 
-    
+
 
 
 
@@ -355,4 +355,4 @@
         </script>
     @endif
 
-</div>
+</form>

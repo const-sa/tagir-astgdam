@@ -307,7 +307,7 @@
         </li>
 
         <li class="list-item">
-            <a href="{{ route('admin.accounting') }}">
+            <a href="{{ route('admin.reports') }}">
                 <div>
                     <i class="fa-solid fa-grip"></i>
                     التقارير

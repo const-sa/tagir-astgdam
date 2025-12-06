@@ -223,6 +223,7 @@ Route::group([
             Route::post('/accounts/add', [AccountTreeController::class, 'store'])->name('accounts.add');
             Route::post('/accounts/update', [AccountTreeController::class, 'update'])->name('accounts.update');
 
+            Route::view('reports', 'admin.reports.index')->name('reports');
             Route::view('accounting', 'admin.accounting')->name('accounting')->middleware('can:read_accounts');
             Route::prefix('accounting')->group(function () {
                 Route::get('account_settings', AccountsSettings::class)->name('account_settings');

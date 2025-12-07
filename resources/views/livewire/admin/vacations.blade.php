@@ -398,7 +398,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    {{-- <div class="form-group">
+                    <div class="form-group">
                         <label for="">الموظف</label>
                         <select wire:model="user_id" id="user_id" class="form-control">
                             <option value="">اختر الموظف</option>
@@ -406,19 +406,19 @@
                                 <option value="{{ $emp->id }}">{{ $emp->name }}</option>
                             @endforeach
                         </select>
-                    </div> --}}
-                    <div class="form-group mb-3">
-                    <label for="user_id_select">الموظف</label>
-                    <div wire:ignore>
-                        <x-select2
-                            url="/admin/select2/employees"
-                            placeholder="اختر الموظف"
-                            id="user_id_select"
-                            wire:model="user_id"
-                            class="form-control"
-                        />
                     </div>
-                </div>
+                    {{-- <div class="form-group mb-3">
+                        <label for="user_id_select">الموظف</label>
+                        <div wire:ignore>
+                            <x-select2
+                                url="/admin/select2/employees"
+                                placeholder="اختر الموظف"
+                                id="user_id_select"
+                                wire:model="user_id"
+                                class="form-control"
+                            />
+                        </div>
+                    </div> --}}
                     <div class="form-group">
                         <label for="">تاريخ الخروج</label>
                         <input type="date" wire:model='exit_at' id="exit_at" class="form-control">

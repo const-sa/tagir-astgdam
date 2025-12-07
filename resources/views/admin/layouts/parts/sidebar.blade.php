@@ -206,16 +206,7 @@
                     </li>
                 @endcan
 
-                @can('read_contracts')
-                    <li class="list-item">
-                        <a href="{{ route('admin.contracts') }}" class="">
-                            <div>
-                                <i class="fas fa-file-signature"></i>
-                                العقود
-                            </div>
-                        </a>
-                    </li>
-                @endcan
+
                 @can('read_projects')
                     <li class="list-item">
                         <a href="{{ route('admin.projects') }}" class="">
@@ -273,6 +264,16 @@
                     </div>
                 </a>
             </li>
+            @can('read_contracts')
+                    <li class="list-item">
+                        <a href="{{ route('admin.contracts') }}" class="">
+                            <div>
+                                <i class="fas fa-file-signature"></i>
+                                العقود
+                            </div>
+                        </a>
+                    </li>
+                @endcan
         </div>
         @can('read_clients')
             <li class="list-item">

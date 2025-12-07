@@ -180,7 +180,7 @@
         @endcanany
 
         <li class="list-item">
-            <a data-bs-toggle="collapse" href="#" aria-expanded="false">
+            <a data-bs-toggle="collapse" href="#hiring" aria-expanded="false">
                 <div>
                     <i class=" fas fa-gear"></i>
                     مشاريع التاجير

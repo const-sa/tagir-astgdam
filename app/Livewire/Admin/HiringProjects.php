@@ -11,7 +11,7 @@ use Livewire\WithPagination;
 class HiringProjects extends Component
 {
     use WithPagination,WithFileUploads;
-
+  protected $paginationTheme = 'bootstrap';
     public $queryString = ['screen'];
     public $screen = 'index';
     public $project_id;

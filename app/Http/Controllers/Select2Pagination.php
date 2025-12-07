@@ -38,7 +38,7 @@ class Select2Pagination extends Controller
                     'id'        => $emp->id,
                     'text'      => $emp->text,
                     'id_number' => $emp->id_number,
-                    'phone'     => $emp->phone,        
+                    'phone'     => $emp->phone,
                 ];
             }),
             'pagination' => [
@@ -46,9 +46,37 @@ class Select2Pagination extends Controller
             ],
         ]);
     }
-    // public function employees()
-    // {
-    //     $search = trim(request('search'));
+    public function employeesmodel(Request $request)
+    {
+        // dd('here');
+        $search = trim($request->get('search', ''));
+        $perPage = 10;
+
+        $query = User::employes()
+            ->select(
+                'id',
+                DB::raw('name AS text'),
+                'id_number',
+                'phone'
+            );
+
+        if ($search !== '') {
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'LIKE', "%{$search}%")
+                  ->orWhere('id_number', 'LIKE', "%{$search}%")
+                  ->orWhere('phone', 'LIKE', "%{$search}%");
+            });
+        }
+
+        $employees = $query->simplePaginate($perPage);
+
+        return response()->json([
+            'results' => $employees->items(), // 👈 مهم: items()
+            'pagination' => [
+                'more' => $employees->hasMorePages(), // 👈 أو !empty(nextPageUrl())
+            ],
+        ]);
+    }
 
     //     $query = User::employes()
     //         ->select('id', DB::raw('name AS text'));

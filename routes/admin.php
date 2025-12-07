@@ -189,6 +189,7 @@ Route::group([
                     ->name('contracts.form');
             });
             Route::get('/select2/employees', [Select2Pagination::class, 'employees'])->name('employees.select2');
+            Route::get('/select2/employeesmodel', [Select2Pagination::class, 'employeesmodel'])->name('employeesmodel.select2');
 
             // Invoices
             Route::prefix('invoices')->group(function () {
@@ -296,8 +297,9 @@ Route::group([
 
             Route::view('/management', 'admin.management.index')->name('management');
             Route::view('/management/create', 'admin.management.create')->name('management.create');
-            Route::view('/workers', 'admin.workers.index')->name('workers');
-            Route::view('/workers/create', 'admin.workers.create')->name('workers.create');
+            // Route::view('/workers', 'admin.workers.index')->name('workers');
+            // Route::view('/workers/create', 'admin.workers.create')->name('workers.create');
+            Route::get('/workers', \App\Livewire\Admin\Workers::class)->name('workers');
             // Route::view('/hiring', 'admin.hiring.index')->name('hiring');
             // Route::view('/hiring/create', 'admin.hiring.create')->name('hiring.create');
             Route::get('/hiring', HiringProjects::class)->name('hiring');

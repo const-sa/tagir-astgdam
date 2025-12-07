@@ -96,9 +96,17 @@ class User extends Authenticatable
     {
         return $q->where('type', 'employe');
     }
+    public function scopeWorkers($q)
+    {
+        return $q->where('type', 'worker');
+    }
     public function scopeAdministration($q)
     {
         return $q->where('type', 'administration-employe');
+    }
+    public function currentHiringProject()
+    {
+        return $this->belongsTo(HiringProject::class, 'hiring_project_id');
     }
 
     public function scopeActive($q)

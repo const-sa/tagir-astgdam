@@ -77,94 +77,6 @@
         </div>
 
     </div>
-    {{-- <div class="row g-3 mb-3">
-        <div class="col-md-3">
-            <div class="card text-white text-center
-            {{ $filter_approval_status === 'pending' ? 'border border-3 border-light' : '' }}
-            bg-secondary"
-                style="cursor:pointer" wire:click="filterByStatus('pending')">
-
-                <div class="card-body">
-                    <h6>الطلبات المعلقة</h6>
-                    <h3>{{ $stats['pending'] }}</h3>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card text-white text-center
-            {{ $filter_approval_status === 'approved' ? 'border border-3 border-light' : '' }}
-            bg-success"
-                style="cursor:pointer" wire:click="filterByStatus('approved')">
-
-                <div class="card-body">
-                    <h6>الطلبات المقبولة</h6>
-                    <h3>{{ $stats['approved'] }}</h3>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card text-white text-center
-            {{ $filter_approval_status === 'rejected' ? 'border border-3 border-light' : '' }}
-            bg-danger"
-                style="cursor:pointer" wire:click="filterByStatus('rejected')">
-
-                <div class="card-body">
-                    <h6>الطلبات المرفوضة</h6>
-                    <h3>{{ $stats['rejected'] }}</h3>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card text-white text-center
-            {{ $filter_exit_status === 'exited' ? 'border border-3 border-light' : '' }}
-            bg-info"
-                style="cursor:pointer" wire:click="filterByExit('exited')">
-
-                <div class="card-body">
-                    <h6>تم الخروج</h6>
-                    <h3>{{ $stats['exited'] }}</h3>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card text-dark text-center
-            {{ $filter_exit_status === 'not_exited' ? 'border border-3 border-dark' : '' }}
-            bg-warning"
-                style="cursor:pointer" wire:click="filterByExit('not_exited')">
-
-                <div class="card-body">
-                    <h6>لم يخرج بعد</h6>
-                    <h3>{{ $stats['not_exited'] }}</h3>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card text-white text-center
-            {{ $filter_return_status === 'returned' ? 'border border-3 border-light' : '' }}
-            bg-primary"
-                style="cursor:pointer" wire:click="filterByReturn('returned')">
-
-                <div class="card-body">
-                    <h6>عاد الموظف</h6>
-                    <h3>{{ $stats['returned'] }}</h3>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card text-white text-center
-            {{ $filter_return_status === 'not_returned' ? 'border border-3 border-light' : '' }}
-            bg-dark"
-                style="cursor:pointer" wire:click="filterByReturn('not_returned')">
-
-                <div class="card-body">
-                    <h6>لم يعد بعد</h6>
-                    <h3>{{ $stats['not_returned'] }}</h3>
-                </div>
-            </div>
-        </div>
-
-    </div> --}}
-
     <div class="bar-options d-flex align-items-center justify-content-start flex-wrap gap-1 mb-2">
         <button class="main-btn" data-bs-toggle="modal" data-bs-target="#createVacation">
             @lang('admin.Add')
@@ -263,8 +175,6 @@
                                     <span class="badge bg-secondary">معلق</span>
                             @endswitch
                         </td>
-
-                        {{-- تم الخروج؟ --}}
                         <td>
                             @if ($vacation->exit_done_at)
                                 <span class="badge bg-success">
@@ -294,8 +204,6 @@
                                         رفض
                                     </button>
                                 @endif
-
-                                {{-- تسجيل الخروج الفعلي بعد الموافقة --}}
                                 @if ($vacation->approval_status === 'approved' && !$vacation->exit_done_at)
                                     <button class="btn btn-warning btn-sm"
                                         wire:click='confirmExit({{ $vacation->id }})'>
@@ -407,18 +315,9 @@
                             @endforeach
                         </select>
                     </div>
-                    {{-- <div class="form-group mb-3">
-                        <label for="user_id_select">الموظف</label>
-                        <div wire:ignore>
-                            <x-select2
-                                url="/admin/select2/employees"
-                                placeholder="اختر الموظف"
-                                id="user_id_select"
-                                wire:model="user_id"
-                                class="form-control"
-                            />
-                        </div>
-                    </div> --}}
+
+
+
                     <div class="form-group">
                         <label for="">تاريخ الخروج</label>
                         <input type="date" wire:model='exit_at' id="exit_at" class="form-control">
@@ -437,5 +336,11 @@
             </div>
         </div>
     </div>
+
+
+
+
+
+
 
 </div>
